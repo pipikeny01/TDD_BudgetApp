@@ -16,15 +16,16 @@ namespace TDD_BudgetApp
         {
             var budgets = _budgetRepository.GetAll();
 
-            if (budgets.Any())
-            {
-                var budget = budgets.First();
-                var period = new Period(start, end);
+            decimal total = 0;
 
-                return (decimal)(period.OverlappingDays(budget) * budget.DailyAmount());
+            var period = new Period(start, end);
+
+            foreach (var budget in budgets)
+            {
+                total += (decimal)(period.OverlappingDays(budget) * budget.DailyAmount());
             }
 
-            return 0;
+            return total;
         }
     }
 }

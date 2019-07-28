@@ -74,12 +74,14 @@ namespace TDD_BudgetApp
             TotalAmountShouldBe(20, new DateTime(2010, 4, 1), new DateTime(2010, 4, 2));
         }
 
-        //[Test]
-        //public void Daily_Amount_is_10()
-        //{
-        //    GivenBudgets(new Budget { YearMonth = "201004", Amount = 300 });
-        //    TotalAmountShouldBe(20, new DateTime(2010, 4, 1), new DateTime(2010, 4, 2));
-        //}
+        [Test]
+        public void multiple_budgets()
+        {
+            GivenBudgets(
+                new Budget { YearMonth = "201004", Amount = 300 },
+                new Budget { YearMonth = "201005", Amount = 31 });
+            TotalAmountShouldBe(12, new DateTime(2010, 4, 30), new DateTime(2010, 5, 2));
+        }
 
         private void TotalAmountShouldBe(int expect, DateTime start, DateTime end)
         {
