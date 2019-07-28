@@ -20,16 +20,24 @@ namespace TDD_BudgetApp
 
         public double OverlappingDays(Budget budget)
         {
-            if (Start > budget.LastDay)
-            {
+            if (End < Start)
                 return 0;
-            }
-            if (End < budget.FirstDay)
+
+
+            if (Start > budget.LastDay || End < budget.FirstDay)
             {
                 return 0;
             }
 
-            return Days();
+            var effectiveStart = budget.FirstDay > Start
+                ? budget.FirstDay
+                : Start;
+
+            var effectiveEnd = budget.LastDay < End
+                ? budget.LastDay
+                : End;
+
+            return (effectiveEnd - effectiveStart).TotalDays + 1;
         }
     }
 }

@@ -17,5 +17,15 @@ namespace TDD_BudgetApp
                 return new DateTime(FirstDay.Year, FirstDay.Month, daysInMonth);
             }
         }
+
+        public double DailyAmount()
+        {
+            return Amount / Days();
+        }
+
+        private double Days()
+        {
+            return (LastDay - FirstDay).TotalDays + 1;
+        }
     }
 }
