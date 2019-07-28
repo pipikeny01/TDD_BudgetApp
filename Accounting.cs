@@ -12,14 +12,16 @@ namespace TDD_BudgetApp
             _budgetRepository = budgetRepository;
         }
 
-        public double TotalAmount(DateTime start, DateTime end)
+        public decimal TotalAmount(DateTime start, DateTime end)
         {
-
             var budgets = _budgetRepository.GetAll();
 
             if (budgets.Any())
             {
-                return (end - start).TotalDays; 
+                var budget = budgets.First();
+                var period = new Period(start, end);
+
+                return (decimal)period.OverlappingDays(budget);
             }
 
             return 0;

@@ -63,8 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounting.cs" />
+    <Compile Include="Budget.cs" />
     <Compile Include="BudgetTests.cs" />
     <Compile Include="IBudgetRepository.cs" />
+    <Compile Include="Period.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
