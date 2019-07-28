@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TDD_BudgetApp
@@ -15,12 +16,6 @@ namespace TDD_BudgetApp
         public double TotalAmount(DateTime start, DateTime end)
         {
 
-            var budgets = _budgetRepository.GetAll();
-
-            if (budgets.Any())
-            {
-                return (end - start).TotalDays; 
-            }
 
             return 0;
         }
