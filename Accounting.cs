@@ -17,24 +17,25 @@ namespace TDD_BudgetApp
         {
             var budgets = _budgetRepository.GetAll();
 
-            var queryBudgets = budgets.Where(p=>
-            {
-                var dateTime = ParseExact(p);
-                return dateTime >= start && dateTime <= end;
-            }).ToList();
+            var period = new Period(start, end);
+            var queryBudgets = SelectBudgets(start, end, budgets);
 
-            if (queryBudgets.Count > 0)
+            int sum = 0;
+            foreach (var budget in queryBudgets)
             {
-                var firstOrDefault = queryBudgets.FirstOrDefault();
-                return firstOrDefault.Amount / ParseExact(firstOrDefault).;
+                sum += budget.DayAmount() * period.EffectiveDays(budget);
             }
 
-            return 0;
+            return sum;
         }
 
-        private static DateTime ParseExact(Budget p)
+        private static List<Budget> SelectBudgets(DateTime start, DateTime end, List<Budget> budgets)
         {
-            return DateTime.ParseExact(p.YearMonth + "01","yyyyMMdd",null);
+            var queryBudgets = budgets
+                .Where(p => int.Parse(p.YearMonth) >= int.Parse(start.ToString("yyyyMM")) && 
+                            int.Parse(p.YearMonth) <= int.Parse(end.ToString("yyyyMM"))).ToList();
+
+            return queryBudgets;
         }
     }
 }
