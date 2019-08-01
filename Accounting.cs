@@ -21,15 +21,10 @@ namespace TDD_BudgetApp
             double sum = 0;
             foreach (var budget in budgets)
             {
-                sum += CalcAmount(budget, period);
+                sum += budget.CalcAmount(period);
             }
 
             return sum;
-        }
-
-        private static double CalcAmount(Budget budget, Period period)
-        {
-            return budget.DayAmount() * period.OverlappingDays(budget);
         }
     }
 }

@@ -15,5 +15,15 @@ namespace TDD_BudgetApp
         {
             return Amount / ((LastDay - FirstDay).TotalDays + 1);
         }
+
+        public double CalcAmount(Period period)
+        {
+            return DayAmount() * period.OverlappingDays(CreatePeriod());
+        }
+
+        private Period CreatePeriod()
+        {
+           return  new Period(FirstDay,LastDay );
+        }
     }
 }
