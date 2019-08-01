@@ -15,10 +15,7 @@ namespace TDD_BudgetApp
 
         public double OverlappingDays(Budget budget)
         {
-            if (End < budget.FirstDay || Start > budget.LastDay)
-            {
-                return 0;
-            }
+            if (InvalidDay() || NoOverlapping(budget)) return 0;
 
             var effectiveStart = Start;
             var effectiveEnd = End;
@@ -36,6 +33,16 @@ namespace TDD_BudgetApp
             }
 
             return (effectiveEnd - effectiveStart).TotalDays + 1;
+        }
+
+        private bool InvalidDay()
+        {
+            return Start >End;
+        }
+
+        private bool NoOverlapping(Budget budget)
+        {
+            return End < budget.FirstDay || Start > budget.LastDay;
         }
     }
 }

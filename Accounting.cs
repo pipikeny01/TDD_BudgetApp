@@ -13,18 +13,23 @@ namespace TDD_BudgetApp
 
         public double TotalAmount(DateTime start, DateTime end)
         {
-            if (start > end) return 0;
+            var period = new Period(start, end);
+
 
             var budgets = _budgetRepository.GetAll();
 
             double sum = 0;
-            var period = new Period(start, end);
             foreach (var budget in budgets)
             {
-                sum += budget.DayAmount() * period.OverlappingDays(budget);
+                sum += CalcAmount(budget, period);
             }
 
             return sum;
+        }
+
+        private static double CalcAmount(Budget budget, Period period)
+        {
+            return budget.DayAmount() * period.OverlappingDays(budget);
         }
     }
 }
