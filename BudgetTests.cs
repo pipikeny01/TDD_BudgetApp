@@ -7,22 +7,12 @@ namespace TDD_BudgetApp
 {
     public class BudgetTests
     {
-        private Accounting _accounting;
-        private IBudgetRepository _stubBudgetRepository;
 
-        [SetUp]
-        public void Setup()
+
+        [Test]
+        public void no_budgets()
         {
-            _stubBudgetRepository = Substitute.For<IBudgetRepository>();
-            _accounting = new Accounting(_stubBudgetRepository);
-         }
-
-        //[Test]
-        //public void no_budgets()
-        //{
-        //    GivenBudgets();
-        //    TotalAmountShouldBe(0, new DateTime(2010, 4, 1), new DateTime(2010, 4, 1));
-        //}
+        }
 
         //[Test]
         //public void period_inside_budget_month()
@@ -53,14 +43,5 @@ namespace TDD_BudgetApp
         //    TotalAmountShouldBe(20, new DateTime(2010, 4, 1), new DateTime(2010, 4, 2));
         //}
 
-        private void TotalAmountShouldBe(int expect, DateTime start, DateTime end)
-        {
-            Assert.AreEqual(expect, _accounting.TotalAmount(start, end));
-        }
-
-        private void GivenBudgets(params Budget[] budgets)
-        {
-            _stubBudgetRepository.GetAll().Returns(budgets.ToList());
-        }
     }
 }
