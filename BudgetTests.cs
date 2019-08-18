@@ -1,14 +1,9 @@
-﻿using System;
-using System.Linq;
-using NSubstitute;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace TDD_BudgetApp
 {
     public class BudgetTests
     {
-
-
         [Test]
         public void no_budgets()
         {
@@ -42,6 +37,5 @@ namespace TDD_BudgetApp
         //    GivenBudgets(new Budget { YearMonth = "201004", Amount = 300 });
         //    TotalAmountShouldBe(20, new DateTime(2010, 4, 1), new DateTime(2010, 4, 2));
         //}
-
     }
 }
