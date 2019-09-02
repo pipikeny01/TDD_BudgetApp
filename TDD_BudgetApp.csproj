@@ -62,7 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="Budget.cs" />
     <Compile Include="BudgetTests.cs" />
+    <Compile Include="IRepos.cs" />
+    <Compile Include="Period.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
