@@ -1,12 +1,26 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
+using TDD_BudgetApp.Service;
 
 namespace TDD_BudgetApp
 {
     public class BudgetTests
     {
+        private Accounting _accounting = new Accounting();
+
         [Test]
         public void no_budgets()
         {
+            var expect = 0;
+            var start = new DateTime(2010, 4, 1);
+            var end = new DateTime(2010, 4, 2);
+            ShouldBe(expect, start, end);
+        }
+
+        private void ShouldBe(int expect, DateTime start, DateTime end)
+        {
+            var totalAmount = _accounting.TotalAmount(start, end);
+            Assert.AreEqual(expect, totalAmount);
         }
 
         //[Test]
