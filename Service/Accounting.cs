@@ -16,6 +16,7 @@ namespace TDD_BudgetApp.Service
         public double TotalAmount(Period period)
         {
             var budgets = _budgetRepos.GetAll();
+
             if (budgets.Any())
             {
                 var budget = budgets.FirstOrDefault();
