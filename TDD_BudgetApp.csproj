@@ -63,8 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BudgetTests.cs" />
+    <Compile Include="Helper\Period.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BudgetService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
