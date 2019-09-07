@@ -10,6 +10,7 @@ namespace TDD_BudgetApp
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
